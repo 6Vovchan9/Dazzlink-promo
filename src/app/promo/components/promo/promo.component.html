@@ -1,0 +1,85 @@
+<app-header></app-header>
+<main class="page">
+    <div class="container page__container">
+        <div class="mainPicture">
+            <picture>
+                <source
+                    media="(max-width: 767px)"
+                    srcset="assets/images/promo-page/mainPicForMobile.png"
+                />
+                <img
+                    src="assets/images/promo-page/mainPic.png"
+                    class="mainPicture__img"
+                    alt="mainPicture"
+                />
+            </picture>
+        </div>
+        <div class="aboutAppInfo">
+            <div class="aboutAppInfo__text">
+                <h1 class="title">Dazzlink: build great relationships</h1>
+                <div class="aboutAppInfo__cont">
+                    Dating for those who are looking for a serious life partner,
+                    not fleeting meetings
+                </div>
+            </div>
+            <div
+                class="aboutAppInfo__infoLinks aboutAppInfo__infoLinks--forDesktop"
+            >
+                <div class="linkToApp">
+                    <a
+                        href="https://www.apple.com/app-store"
+                        target="_blank"
+                        class="linkToApp__item"
+                    >
+                        <img
+                            src="assets/images/store/linkIOSShort.svg"
+                            class="linkToApp__img"
+                            alt="IOS"
+                        />
+                    </a>
+                    <a
+                        href="https://play.google.com"
+                        target="_blank"
+                        class="linkToApp__item"
+                    >
+                        <img
+                            src="assets/images/store/linkAndroid.svg"
+                            class="linkToApp__img"
+                            alt="Android"
+                        />
+                    </a>
+                    <a
+                        href="https://appgallery.huawei.com"
+                        target="_blank"
+                        class="linkToApp__item"
+                    >
+                        <img
+                            src="assets/images/store/linkAppGallery.svg"
+                            class="linkToApp__img"
+                            alt="AppGallery"
+                        />
+                    </a>
+                </div>
+            </div>
+            <!-- <div
+                class="aboutAppInfo__infoLinks aboutAppInfo__infoLinks--forMobile"
+            >
+                <div
+                    (click)="mobileDetectService?.goToDeviceStore()"
+                    class="downloadApp"
+                >
+                    <div class="downloadApp__title">
+                        Скачайте<br />приложение
+                    </div>
+                    <div class="downloadApp__icon">
+                        <img
+                            [src]="mobileDetectService?.mobileStoreIconSrc()"
+                            alt="storeIcon"
+                        />
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</main>
+<app-footer></app-footer>

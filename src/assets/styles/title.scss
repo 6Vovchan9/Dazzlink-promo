@@ -1,0 +1,23 @@
+.title {
+    font-weight: 900;
+    font-size: 40px;
+    line-height: 48px;
+
+    // &--main {
+    //     font-size: 40px;
+    // }
+
+    // &--small {
+    //     font-size: 24px;
+    // }
+
+    // &--scalable {
+    //     font-size: 24px;
+    // }
+
+    @media #{$notMobile} {
+        // &--scalable {
+        //     font-size: 40px;
+        // }
+    }
+}

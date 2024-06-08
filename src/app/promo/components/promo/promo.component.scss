@@ -1,0 +1,61 @@
+@import "variables";
+
+.mainPicture {
+    display: block;
+    overflow: hidden;
+    border-radius: 48px;
+    .mainPicture__img {
+        width: 100%;
+    }
+    @media #{$mobile} {
+        border-radius: 32px;
+    }
+}
+
+.aboutAppInfo {
+    display: flex;
+    flex-direction: column;
+    margin-top: 24px;
+    font-size: 24px;
+
+    .aboutAppInfo__text {
+        max-width: 586px;
+        // flex: 1;
+
+        .aboutAppInfo__cont {
+            font-size: 24px;
+            line-height: 32px;
+            margin-top: 12px;
+        }
+    }
+
+    .aboutAppInfo__infoLinks {
+        &--forDesktop {
+            display: none;
+        }
+
+        &--forMobile {
+            display: block;
+        }
+    }
+
+    @media #{$notMobile} {
+        flex-direction: row;
+        justify-content: space-between;
+        column-gap: 40px;
+        margin-top: 48px;
+
+        .aboutAppInfo__text .aboutAppInfo__cont {
+            margin-top: 16px;
+        }
+
+        .aboutAppInfo__infoLinks {
+            &--forDesktop {
+                display: block;
+            }
+            &--forMobile {
+                display: none;
+            }
+        }
+    }
+}

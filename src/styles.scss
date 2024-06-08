@@ -1,1 +1,78 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --color-blue: #5532eb;
+    --color-blue1: #4a4ac6;
+    --color-pink: #ff99ec;
+    --color-black: #000;
+    --color-black1: #333;
+    --color-black2: #111;
+    --color-white: #fff;
+    --color-gray: #807d7d;
+    --color-gray1: #f2f3f4;
+    --color-red: #e40038;
+    --color-green: green;
+    --color-text-gray: #a8a8a8;
+    --color-light-gray: #eee;
+}
+
+html,
+body {
+    // scroll-behavior: smooth;
+    height: 100%;
+    font-family: "Nunito", Arial, Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.42;
+}
+
+body {
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    padding: 0;
+    margin: 0;
+}
+
+ul li {
+    list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    font-weight: normal;
+}
+
+img {
+    display: block;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1240px;
+    padding: 0 20px;
+}

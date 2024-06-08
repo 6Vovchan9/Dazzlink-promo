@@ -1,0 +1,20 @@
+@import "variables";
+
+.header {
+    .header__container {
+        display: flex;
+        justify-content: center;
+        padding: 24px 20px;
+    }
+}
+
+.logo {
+    height: 32px;
+    .logo__image {
+        max-height: 100%;
+    }
+
+    @media #{$mobile} {
+        height: 24px;
+    }
+}
