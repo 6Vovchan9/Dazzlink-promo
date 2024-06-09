@@ -1,7 +1,8 @@
-import { Component } from "@angular/core";
+import { Component, Optional } from "@angular/core";
 import { FooterComponent } from "@app/shared/modules/footer/footer.component";
 
 import { HeaderComponent } from "@app/shared/modules/header/header.component";
+import { MobileDetectService } from "@app/shared/services/mobile-detect.service";
 
 @Component({
     selector: "app-promo",
@@ -10,4 +11,6 @@ import { HeaderComponent } from "@app/shared/modules/header/header.component";
     templateUrl: "./promo.component.html",
     styleUrl: "./promo.component.scss",
 })
-export class PromoComponent {}
+export class PromoComponent {
+    constructor(@Optional() public mobileDetectService: MobileDetectService) {}
+}
