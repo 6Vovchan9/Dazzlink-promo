@@ -1,10 +1,19 @@
+@import "variables";
+
 .footer {
     .footer__container {
+        display: flex;
         padding: 24px 20px;
         .footer__company {
             font-size: 14px;
             line-height: 20px;
             color: #a8a8a8;
+        }
+    }
+
+    @media #{$mobile} {
+        .footer__container {
+            justify-content: center;
         }
     }
 }
