@@ -7,8 +7,8 @@ export class MobileDetectService {
     public osDevice!: string;
     private window: Window | any;
 
-    constructor(@Inject(DOCUMENT) private _document: Document) {
-        this.window = this._document.defaultView as Window;
+    constructor(@Inject(DOCUMENT) private readonly documentRef: Document) {
+        this.window = this.documentRef.defaultView as Window;
         this.operateUserAgent();
     }
 

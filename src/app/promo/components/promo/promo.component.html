@@ -61,24 +61,27 @@
                     </a>
                 </div>
             </div>
-            <div
-                class="aboutAppInfo__infoLinks aboutAppInfo__infoLinks--forMobile"
-            >
+            @if (mobileDetectService.osDevice) {
                 <div
-                    (click)="mobileDetectService.goToDeviceStore()"
-                    class="downloadApp"
+                    class="aboutAppInfo__infoLinks aboutAppInfo__infoLinks--forMobile"
                 >
-                    <div class="downloadApp__title">
-                        Download the<br />mobile app
-                    </div>
-                    <div class="downloadApp__icon">
-                        <img
-                            [src]="mobileDetectService.mobileStoreIconSrc()"
-                            alt="store"
-                        />
-                    </div>
+                    <button
+                        type="button"
+                        (click)="mobileDetectService.goToDeviceStore()"
+                        class="downloadApp"
+                    >
+                        <div class="downloadApp__title">
+                            Download the<br />mobile app
+                        </div>
+                        <div class="downloadApp__icon">
+                            <img
+                                [src]="mobileDetectService.mobileStoreIconSrc()"
+                                alt="store"
+                            />
+                        </div>
+                    </button>
                 </div>
-            </div>
+            }
         </div>
     </div>
 </main>
