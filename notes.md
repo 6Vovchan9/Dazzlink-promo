@@ -18,3 +18,7 @@ npm install --save-dev --save-exact prettier
 And format all files with Prettier:
 npx prettier . --write
 (или скачать плагин для редактора кода, включить в настройках prettier как "Default formatter" и включить "Format on save")
+
+## ssr
+
+Server-side rendering (SSR) — это техника рендеринга веб-страниц на сервере перед отправкой их клиенту. Изза нее можно заметить такую неприятную вещь как например при прогрузке главной страницы сначала отображаются 3 иконки мобильных магазинов ("linkToApp") и только потом это перерастает в "downloadApp". Чтобы отключить эту технику надо в файле angular.json установить свойству projects['dazzlink-promo'].architect.build.configurations.development(production).ssr/prerender значение false
