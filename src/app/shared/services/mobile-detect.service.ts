@@ -1,21 +1,29 @@
 import { DOCUMENT } from "@angular/common";
-import { Inject, Injectable } from "@angular/core";
+import { Inject, Injectable, InjectionToken, inject } from "@angular/core";
+
+const WINDOW = new InjectionToken<Window>(
+    "An abstraction over global window object",
+    {
+        factory: () => inject(DOCUMENT).defaultView!,
+    }
+);
 
 @Injectable()
 export class MobileDetectService {
-    public mobileOrTabletDevice = false;
     public osDevice!: string;
-    private window: Window | any;
 
-    constructor(@Inject(DOCUMENT) private readonly documentRef: Document) {
-        this.window = this.documentRef.defaultView as Window;
+    constructor(
+        @Inject(DOCUMENT) private readonly documentRef: Document,
+        @Inject(WINDOW)
+        private readonly windowRef: Window & { MobileDetect: any }
+    ) {
         this.operateUserAgent();
     }
 
     private operateUserAgent(): void {
-        const mdClass = this.window["MobileDetect"]; // Этот класс берется из скрипта в index.html
+        const mdClass = this.windowRef["MobileDetect"]; // Этот класс берется из скрипта в index.html
         if (mdClass) {
-            const mbInstance = new mdClass(this.window.navigator.userAgent);
+            const mbInstance = new mdClass(this.windowRef.navigator.userAgent);
             console.log(
                 "Mobile: " +
                     mbInstance.mobile() +
@@ -29,13 +37,12 @@ export class MobileDetectService {
                     mbInstance.userAgent()
             );
 
-            this.mobileOrTabletDevice = Boolean(mbInstance.mobile());
             this.osDevice = mbInstance.os();
         }
     }
 
     public mobileStoreIconSrc(): string {
-        const uAgent = this.window.navigator.userAgent.toLowerCase();
+        const uAgent = this.windowRef.navigator.userAgent.toLowerCase();
         if (this.osDevice?.toLowerCase() === "ios") {
             return "assets/images/store/linkIOS.svg";
         } else if (this.osDevice?.toLowerCase() === "androidos") {
@@ -49,23 +56,23 @@ export class MobileDetectService {
     }
 
     public goToDeviceStore(): void {
-        const uAgent = this.window.navigator.userAgent.toLowerCase();
+        const uAgent = this.windowRef.navigator.userAgent.toLowerCase();
         // if (this.osDevice?.toLowerCase()) { // если это планшет или телефон
         console.log("Идем в store");
         if (this.osDevice?.toLowerCase() === "ios") {
             // window.location.href = 'https://www.apple.com/app-store';
-            this.window.location.href = "https://apps.apple.com/ru";
+            this.windowRef.location.href = "https://apps.apple.com/ru";
         } else if (this.osDevice?.toLowerCase() === "androidos") {
             if (/hms/.test(uAgent) && !/gms/.test(uAgent)) {
-                this.window.open("https://appgallery.huawei.com");
+                this.windowRef.open("https://appgallery.huawei.com");
             } else {
                 // window.open('https://play.google.com', '_blank');
                 // window.location.href = 'https://play.google.com';
-                this.window.open("https://play.google.com");
+                this.windowRef.open("https://play.google.com");
             }
         } else {
             // window.location.href = 'https://appgallery.huawei.com';
-            this.window.open("https://appgallery.huawei.com");
+            this.windowRef.open("https://appgallery.huawei.com");
         }
         // } else { // если это комп или ноут
         //     window.open('https://www.apple.com/app-store');

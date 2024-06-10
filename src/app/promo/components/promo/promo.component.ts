@@ -1,3 +1,4 @@
+import { NgTemplateOutlet } from "@angular/common";
 import { Component, Optional } from "@angular/core";
 import { FooterComponent } from "@app/shared/modules/footer/footer.component";
 
@@ -7,7 +8,7 @@ import { MobileDetectService } from "@app/shared/services/mobile-detect.service"
 @Component({
     selector: "app-promo",
     standalone: true,
-    imports: [HeaderComponent, FooterComponent],
+    imports: [HeaderComponent, FooterComponent, NgTemplateOutlet],
     templateUrl: "./promo.component.html",
     styleUrl: "./promo.component.scss",
 })

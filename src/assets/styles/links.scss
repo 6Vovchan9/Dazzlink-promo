@@ -1,18 +1,15 @@
 .linkToApp {
     display: flex;
-    justify-content: flex-end;
     flex-wrap: wrap;
     column-gap: 16px;
     row-gap: 16px;
     .linkToApp__item {
         cursor: pointer;
         .linkToApp__img {
-            // display: block;
-            max-height: 44px;
-
-            @media #{$notMobile} {
-                max-height: 48px;
-            }
+            max-height: 48px;
         }
+    }
+    @media #{$notMobile} {
+        justify-content: flex-end;
     }
 }

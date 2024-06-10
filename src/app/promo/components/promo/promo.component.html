@@ -25,41 +25,7 @@
             <div
                 class="aboutAppInfo__infoLinks aboutAppInfo__infoLinks--forDesktop"
             >
-                <div class="linkToApp">
-                    <a
-                        href="https://www.apple.com/app-store"
-                        target="_blank"
-                        class="linkToApp__item"
-                    >
-                        <img
-                            src="assets/images/store/linkIOSShort.svg"
-                            class="linkToApp__img"
-                            alt="IOS"
-                        />
-                    </a>
-                    <a
-                        href="https://play.google.com"
-                        target="_blank"
-                        class="linkToApp__item"
-                    >
-                        <img
-                            src="assets/images/store/linkAndroid.svg"
-                            class="linkToApp__img"
-                            alt="Android"
-                        />
-                    </a>
-                    <a
-                        href="https://appgallery.huawei.com"
-                        target="_blank"
-                        class="linkToApp__item"
-                    >
-                        <img
-                            src="assets/images/store/linkAppGallery.svg"
-                            class="linkToApp__img"
-                            alt="AppGallery"
-                        />
-                    </a>
-                </div>
+                <ng-container *ngTemplateOutlet="linkToApp"></ng-container>
             </div>
             @if (mobileDetectService.osDevice) {
                 <div
@@ -81,8 +47,52 @@
                         </div>
                     </button>
                 </div>
+            } @else {
+                <div
+                    class="aboutAppInfo__infoLinks aboutAppInfo__infoLinks--forMobile"
+                >
+                    <ng-container *ngTemplateOutlet="linkToApp"></ng-container>
+                </div>
             }
         </div>
     </div>
 </main>
 <app-footer></app-footer>
+
+<ng-template #linkToApp>
+    <div class="linkToApp">
+        <a
+            href="https://www.apple.com/app-store"
+            target="_blank"
+            class="linkToApp__item"
+        >
+            <img
+                src="assets/images/store/linkIOSShort.svg"
+                class="linkToApp__img"
+                alt="IOS"
+            />
+        </a>
+        <a
+            href="https://play.google.com"
+            target="_blank"
+            class="linkToApp__item"
+        >
+            <img
+                src="assets/images/store/linkAndroid.svg"
+                class="linkToApp__img"
+                alt="Android"
+            />
+        </a>
+        <a
+            href="https://appgallery.huawei.com"
+            target="_blank"
+            class="linkToApp__item"
+        >
+            <img
+                src="assets/images/store/linkAppGallery.svg"
+                class="linkToApp__img"
+                alt="AppGallery"
+            />
+        </a>
+    </div>
+</ng-template>
