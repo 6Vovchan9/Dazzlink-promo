@@ -56,7 +56,7 @@
                 >
                     <button
                         type="button"
-                        (click)="mobileDetectService.goToDeviceStore()"
+                        (click)="onClickByDownloadAppOnMobile()"
                         class="downloadApp"
                     >
                         <div class="downloadApp__title">
@@ -97,6 +97,10 @@
         <div style="background-color: red; width: 400px; height: 700px"></div>
         <div style="margin-top: 20px">{{ titleForDownloadBtn }}</div>
         <div style="margin-top: 20px">{{ name() }}</div> -->
+
+        @if (openAppFormModal()) {
+            <app-modal (onClose)="onCloseModal()"></app-modal>
+        }
     </div>
 </main>
 <app-footer></app-footer>
@@ -104,6 +108,7 @@
 <ng-template #linkToApp>
     <div class="linkToApp">
         <a
+            (click)="onClickByDownloadApp($event)"
             href="https://www.apple.com/app-store"
             target="_blank"
             class="linkToApp__item"
@@ -115,6 +120,7 @@
             />
         </a>
         <a
+            (click)="onClickByDownloadApp($event)"
             href="https://play.google.com"
             target="_blank"
             class="linkToApp__item"
@@ -126,6 +132,7 @@
             />
         </a>
         <a
+            (click)="onClickByDownloadApp($event)"
             href="https://appgallery.huawei.com"
             target="_blank"
             class="linkToApp__item"

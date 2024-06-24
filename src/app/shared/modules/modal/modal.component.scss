@@ -1,0 +1,128 @@
+@import "variables";
+
+.modalLayout {
+    position: fixed;
+    background-color: var(--color-white);
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 110;
+    .modalLayout__container {
+        display: flex;
+        padding: 20px;
+        max-height: 100%;
+        .modalLayout__wrapper {
+            display: flex;
+            overflow: hidden;
+            flex-direction: column-reverse;
+            row-gap: 20px;
+            .modalLayout__content {
+                display: flex;
+                flex-direction: column;
+                overflow: scroll;
+            }
+        }
+    }
+
+    @media #{$notMobile} {
+        .modalLayout__container {
+            padding: 64px 20px;
+            .modalLayout__wrapper {
+                flex-direction: row;
+                .modalLayout__content {
+                    flex-direction: row-reverse;
+                }
+                .modalLayout__closeBtn {
+                    padding-left: 15%;
+                    padding-bottom: 50px;
+                    cursor: pointer;
+                    align-self: flex-start;
+                }
+            }
+        }
+    }
+
+    @media #{$mobile} {
+        .modalLayout__container .modalLayout__wrapper {
+            .modalLayout__content {
+                .modalLayout__info {
+                }
+            }
+            .modalLayout__closeBtn {
+                display: flex;
+                justify-content: flex-end;
+            }
+        }
+    }
+}
+
+.closeButtonInWindow {
+    cursor: pointer;
+    position: relative;
+
+    &:before {
+        content: "";
+        width: 64px;
+        height: 64px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    &--withEffect {
+        &:hover {
+            .iconForCloseInModal {
+                transform: scale(1.4) rotate(180deg);
+            }
+        }
+    }
+}
+
+@media #{$notMobile} {
+    .closeButtonInWindow {
+        margin-left: 76px;
+        &:after {
+            content: "Close";
+            position: absolute;
+            right: 100%;
+            top: 0;
+            font-size: 16px;
+            transform: translateX(-4px);
+        }
+    }
+}
+
+.iconForCloseInModal {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    transition: 0.7s;
+
+    &:before {
+        content: "";
+        width: 2px;
+        height: 20px;
+        border-radius: 1px;
+        background-color: var(--color-black1);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(45deg);
+        transform-origin: center center;
+    }
+
+    &:after {
+        content: "";
+        width: 2px;
+        height: 20px;
+        border-radius: 1px;
+        background-color: var(--color-black1);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-45deg);
+        transform-origin: center center;
+    }
+}

@@ -12,12 +12,18 @@ import {
 import { FooterComponent } from "@app/shared/modules/footer/footer.component";
 
 import { HeaderComponent } from "@app/shared/modules/header/header.component";
+import { ModalComponent } from "@app/shared/modules/modal/modal.component";
 import { MobileDetectService } from "@app/shared/services/mobile-detect.service";
 
 @Component({
     selector: "app-promo",
     standalone: true,
-    imports: [HeaderComponent, FooterComponent, NgTemplateOutlet],
+    imports: [
+        HeaderComponent,
+        FooterComponent,
+        NgTemplateOutlet,
+        ModalComponent,
+    ],
     templateUrl: "./promo.component.html",
     styleUrl: "./promo.component.scss",
 })
@@ -25,6 +31,8 @@ export class PromoComponent implements AfterViewInit, OnDestroy {
     @ViewChild("advertisingVideo") advertisingVideo!: ElementRef;
 
     public name = signal<string>("Ivan");
+    public linkToAppDummy = true;
+    public openAppFormModal = signal<boolean>(false);
     public showVideoPoster = signal<boolean>(true); // если бы не сигнал то при OnPush стратегии пришлось бы запускать detectChanges при изм значения этого свойства
     private posterChangeEffect = effect(() => {
         if (this.showVideoPoster()) {
@@ -94,6 +102,25 @@ export class PromoComponent implements AfterViewInit, OnDestroy {
                         console.log("Ошибка при воспроизв. видео :(");
                     });
             }
+        }
+    }
+
+    public onCloseModal(): void {
+        this.openAppFormModal.set(false);
+    }
+
+    public onClickByDownloadApp(e: Event): void {
+        if (this.linkToAppDummy) {
+            e.preventDefault();
+            this.openAppFormModal.set(true);
+        }
+    }
+
+    public onClickByDownloadAppOnMobile(): void {
+        if (this.linkToAppDummy) {
+            this.openAppFormModal.set(true);
+        } else {
+            this.mobileDetectService.goToDeviceStore();
         }
     }
 
