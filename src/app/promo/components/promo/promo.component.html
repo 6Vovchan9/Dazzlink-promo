@@ -1,7 +1,29 @@
 <app-header></app-header>
 <main class="page">
     <div class="container page__container">
-        <div class="mainPicture">
+        <div class="mainVideo">
+            <video
+                #advertisingVideo
+                class="mainVideo__video"
+                playsinline
+                controls
+            >
+                <source
+                    src="https://static.dazzlink.asia/landing/advertising.mp4"
+                    type="video/mp4"
+                />
+                Ваш браузер не поддерживает встроенные видео.
+            </video>
+            <div
+                class="mainVideo__customPoster"
+                [class.mainVideo__customPoster--hidden]="!showVideoPoster()"
+                (click)="onVideoPlay()"
+            >
+                <div class="playIcon"></div>
+            </div>
+        </div>
+
+        <!-- <div class="mainPicture">
             <picture>
                 <source
                     media="(max-width: 767px)"
@@ -13,7 +35,8 @@
                     alt="mainPicture"
                 />
             </picture>
-        </div>
+        </div> -->
+
         <div class="aboutAppInfo">
             <div class="aboutAppInfo__text">
                 <h1 class="title">Dazzlink: build great relationships</h1>
@@ -55,6 +78,25 @@
                 </div>
             }
         </div>
+        <!-- <button
+            style="
+                padding: 20px;
+                border-radius: 16px;
+                background-color: gray;
+                font-size: 16px;
+                font-weight: bold;
+                letter-spacing: 1px;
+                border: none;
+                margin: 20px 0px;
+            "
+            type="button"
+            (click)="onClickMyBtn()"
+        >
+            Button
+        </button>
+        <div style="background-color: red; width: 400px; height: 700px"></div>
+        <div style="margin-top: 20px">{{ titleForDownloadBtn }}</div>
+        <div style="margin-top: 20px">{{ name() }}</div> -->
     </div>
 </main>
 <app-footer></app-footer>
