@@ -16,7 +16,6 @@
             display: flex;
             overflow: hidden;
             flex-direction: column-reverse;
-            row-gap: 20px;
             .modalLayout__content {
                 display: flex;
                 flex-direction: column;
@@ -52,6 +51,7 @@
             .modalLayout__closeBtn {
                 display: flex;
                 justify-content: flex-end;
+                margin-bottom: 20px;
             }
         }
     }

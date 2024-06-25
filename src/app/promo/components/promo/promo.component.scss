@@ -3,6 +3,7 @@
 .mainVideo {
     overflow: hidden;
     position: relative;
+    z-index: 10;
     margin-bottom: 24px;
     border-radius: 16px;
     .mainVideo__video {
@@ -26,8 +27,8 @@
         position: absolute;
         top: 0;
         left: 0;
-        z-index: 10;
-        border-radius: 16px;
+        z-index: 100;
+        // border-radius: 16px;
         transition: 0.5s;
         &--hidden {
             pointer-events: none;
@@ -39,7 +40,7 @@
         border-radius: 32px;
         margin-bottom: 48px;
         .mainVideo__customPoster {
-            border-radius: 32px;
+            // border-radius: 32px;
         }
     }
 }

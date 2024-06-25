@@ -9,6 +9,7 @@ import {
     effect,
     signal,
 } from "@angular/core";
+import { AbsractExample } from "@app/shared/helpers/abstract.class";
 import { FooterComponent } from "@app/shared/modules/footer/footer.component";
 
 import { HeaderComponent } from "@app/shared/modules/header/header.component";
@@ -27,7 +28,10 @@ import { MobileDetectService } from "@app/shared/services/mobile-detect.service"
     templateUrl: "./promo.component.html",
     styleUrl: "./promo.component.scss",
 })
-export class PromoComponent implements AfterViewInit, OnDestroy {
+export class PromoComponent
+    extends AbsractExample
+    implements AfterViewInit, OnDestroy
+{
     @ViewChild("advertisingVideo") advertisingVideo!: ElementRef;
 
     public name = signal<string>("Ivan");
@@ -42,7 +46,9 @@ export class PromoComponent implements AfterViewInit, OnDestroy {
         }
     });
 
-    constructor(@Optional() public mobileDetectService: MobileDetectService) {}
+    constructor(@Optional() public mobileDetectService: MobileDetectService) {
+        super();
+    }
 
     // public get titleForDownloadBtn(): string {
     //     console.log("Обновляем");
@@ -57,6 +63,10 @@ export class PromoComponent implements AfterViewInit, OnDestroy {
     ngAfterViewInit(): void {
         this.ensureVideoPlays();
         // setTimeout(() => this.forRemovePauseListener(), 10_000);
+    }
+
+    requiredMethod(): number {
+        return Math.PI * Math.pow(this.radius, 2);
     }
 
     private onEndedCallback = (): void => {
@@ -107,18 +117,21 @@ export class PromoComponent implements AfterViewInit, OnDestroy {
 
     public onCloseModal(): void {
         this.openAppFormModal.set(false);
+        this.showScroll();
     }
 
     public onClickByDownloadApp(e: Event): void {
         if (this.linkToAppDummy) {
             e.preventDefault();
             this.openAppFormModal.set(true);
+            this.hideScroll();
         }
     }
 
     public onClickByDownloadAppOnMobile(): void {
         if (this.linkToAppDummy) {
             this.openAppFormModal.set(true);
+            this.hideScroll();
         } else {
             this.mobileDetectService.goToDeviceStore();
         }
