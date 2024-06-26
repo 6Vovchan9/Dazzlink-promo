@@ -1,17 +1,55 @@
+import { NgClass } from "@angular/common";
 import { Component, EventEmitter, Output } from "@angular/core";
+import {
+    FormGroup,
+    ReactiveFormsModule,
+    UntypedFormControl,
+    UntypedFormGroup,
+    Validators,
+} from "@angular/forms";
+import { asyncEmailValidator } from "@app/shared/validators/login.validator";
 
 @Component({
     selector: "app-modal",
     standalone: true,
-    imports: [],
+    imports: [NgClass, ReactiveFormsModule],
     templateUrl: "./modal.component.html",
     styleUrl: "./modal.component.scss",
 })
 export class ModalComponent {
+    public clientForm!: FormGroup;
+    public submitted = false;
+
     @Output("onClose")
     public closeModal = new EventEmitter();
 
+    ngOnInit(): void {
+        this.initializeForm();
+    }
+
+    private initializeForm(): void {
+        this.clientForm = new UntypedFormGroup({
+            name: new UntypedFormControl(null, {
+                validators: [Validators.required],
+            }),
+            email: new UntypedFormControl(null, {
+                validators: [Validators.email, Validators.required],
+                asyncValidators: [asyncEmailValidator],
+            }),
+        });
+    }
+
     public onClickCloseBtn(): void {
         this.closeModal.emit();
+    }
+
+    public submit() {
+        this.clientForm.markAllAsTouched();
+        if (this.clientForm?.valid) {
+            this.submitted = true;
+            setTimeout(() => {
+                this.submitted = false;
+            }, 1500);
+        }
     }
 }

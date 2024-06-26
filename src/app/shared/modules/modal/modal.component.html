@@ -2,79 +2,64 @@
     <div class="container modalLayout__container">
         <div class="modalLayout__wrapper">
             <div class="modalLayout__content">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi
-                aliquam modi quo magnam ab. Quisquam corporis quis pariatur
-                repellendus placeat reprehenderit dolores natus, libero
-                accusamus praesentium laboriosam deserunt expedita impedit
-                excepturi eveniet nisi mollitia iste inventore consequatur
-                voluptas possimus rerum ab corrupti harum. Voluptate odio quos
-                animi corrupti alias, quo repellat voluptatum cupiditate ut ab
-                ipsa numquam soluta tenetur reprehenderit rem, laudantium
-                quaerat quam, aperiam placeat pariatur. Provident nulla
-                doloremque earum aperiam quam possimus modi accusantium sit
-                quidem voluptates eum nihil alias reiciendis pariatur quaerat
-                sunt autem, unde eligendi assumenda odio error in est
-                dignissimos. Quas, esse. Ipsa iure earum id error laborum.
-                Molestiae repudiandae itaque tempora obcaecati officiis magnam
-                provident est, nemo praesentium distinctio id. Soluta aspernatur
-                distinctio nisi ullam ducimus recusandae, voluptas doloremque
-                quibusdam voluptatum corporis quidem quaerat. Accusantium soluta
-                vitae molestiae ipsam! Voluptas necessitatibus laudantium ea
-                dolorem labore fugit, minima accusamus, saepe adipisci iusto
-                facilis alias itaque explicabo tempore. Molestiae unde esse
-                magni inventore excepturi! Accusamus reiciendis dolorum
-                perferendis magnam autem laborum soluta quaerat, iusto
-                recusandae quibusdam quas quidem aliquam sequi possimus nemo
-                cupiditate id illo rem dolore labore excepturi at cum doloribus.
-                Excepturi nulla, pariatur voluptatum mollitia provident
-                perferendis ducimus. Nobis molestiae earum, dolorum excepturi
-                commodi voluptatibus ab iste enim beatae laboriosam ipsa
-                corrupti incidunt possimus. Commodi suscipit ipsum, repellat
-                quas vel adipisci voluptatibus necessitatibus inventore ex, eum
-                labore, placeat cupiditate soluta! Itaque nihil quae hic minus
-                sequi! Tempora nisi, quia, omnis voluptas fugiat quod rem ea
-                vero iusto numquam provident molestiae! Mollitia totam illo sit
-                consectetur facilis maiores, nesciunt aliquam nulla iste sint
-                officia alias dolore architecto ipsam beatae earum omnis
-                excepturi saepe hic. Praesentium voluptatem cumque magni
-                laudantium rerum quo voluptatum enim, minus voluptas ea unde
-                dolorum doloribus iure perferendis dignissimos repudiandae id
-                distinctio alias deleniti modi culpa! Excepturi dignissimos,
-                eaque repellat eveniet quisquam recusandae. Voluptates numquam
-                ipsum aspernatur debitis, assumenda expedita deserunt at ea
-                obcaecati. Officiis numquam corrupti, pariatur dolores minima
-                laudantium obcaecati nulla est voluptate minus, magnam aut atque
-                ex omnis repellendus maxime facilis repellat provident ut
-                placeat molestias veritatis. Laudantium, maiores illo.
-                Cupiditate veniam repudiandae reiciendis necessitatibus magnam,
-                debitis dignissimos velit eveniet voluptatum exercitationem modi
-                ut voluptatem et nemo iure. Amet dolore earum quidem officiis
-                saepe, illo eligendi adipisci! Porro non officiis repellendus
-                tempora exercitationem, consequuntur iure beatae aut expedita
-                esse laboriosam earum consequatur hic. Aperiam, libero minima
-                qui, similique necessitatibus quis accusamus tenetur asperiores,
-                repellat delectus voluptatem! Nemo quae qui nobis aliquam
-                obcaecati accusamus eum, nam non temporibus atque velit cum
-                quaerat ullam tempore corrupti fuga modi eius suscipit
-                dignissimos molestias. Ullam minima deleniti mollitia laudantium
-                sint sit, rem eveniet illum voluptatum aperiam molestiae
-                quibusdam aliquam ea accusantium cum enim quam placeat corrupti
-                pariatur rerum expedita officia. Eius qui totam laborum ipsum
-                fuga commodi libero fugit similique ut at consequuntur autem
-                odit quasi deserunt, vel, odio aspernatur id. Minus incidunt
-                amet ipsum quae maxime inventore natus quam accusantium
-                consequuntur assumenda dignissimos nihil aliquam pariatur
-                voluptatum culpa necessitatibus iusto repudiandae eos
-                praesentium enim, numquam error cupiditate nobis ratione?
-                Sapiente, ullam! Aut ducimus culpa enim et cum voluptatibus
-                itaque error harum dolores, consequuntur quos reiciendis
-                repudiandae corrupti provident vero temporibus voluptatum,
-                repellat praesentium, nobis recusandae vel veniam. Aliquid
-                laudantium maxime eveniet magni unde sequi perferendis omnis
-                molestiae atque quis quae similique, iusto suscipit sed quos.
-                Aut qui voluptatibus, temporibus delectus eos eligendi quaerat
-                ut animi quae minima pariatur adipisci, eaque inventore!
-                Maiores!
+                <div class="formForDownloadApp">
+                    <h1 class="moduleTitle formForDownloadApp__title">
+                        Application for access
+                    </h1>
+                    <div class="formForDownloadApp__message">
+                        We invited the first users to test the application. In a
+                        few days we will open public access. If you want to keep
+                        abreast of news, provide your contacts and subscribe to
+                        updates
+                    </div>
+                    <form
+                        class="formForDownloadApp__form clientDataForm"
+                        [formGroup]="clientForm"
+                        (ngSubmit)="submit()"
+                    >
+                        <div
+                            class="clientDataForm__control"
+                            [ngClass]="{
+                                'clientDataForm__control--invalid':
+                                    clientForm.get('name')?.touched &&
+                                    clientForm.get('name')?.invalid,
+                            }"
+                        >
+                            <input
+                                id="clientName"
+                                placeholder="Name"
+                                class="clientDataForm__input"
+                                formControlName="name"
+                                type="text"
+                            />
+                        </div>
+                        <div
+                            class="clientDataForm__control"
+                            [ngClass]="{
+                                'clientDataForm__control--invalid':
+                                    clientForm.get('email')?.touched &&
+                                    clientForm.get('email')?.invalid,
+                            }"
+                        >
+                            <input
+                                id="clientEmail"
+                                placeholder="Email"
+                                class="clientDataForm__input"
+                                formControlName="email"
+                                type="text"
+                            />
+                        </div>
+                        <div class="clientDataForm__buttons">
+                            <button
+                                type="submit"
+                                class="clientDataForm__btn btn"
+                                [disabled]="submitted"
+                            >
+                                Subscribe to updates
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
             <div class="modalLayout__closeBtn" (click)="onClickCloseBtn()">
                 <div class="closeButtonInWindow">

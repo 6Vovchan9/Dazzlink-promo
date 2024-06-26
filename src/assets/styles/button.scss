@@ -1,0 +1,16 @@
+.btn {
+    background-color: #4a4ac6;
+    color: #fff;
+    padding: 12px 20px;
+    font-family: "Nunito", Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.3;
+    }
+}
