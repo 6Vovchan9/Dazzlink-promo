@@ -38,45 +38,51 @@
         </div> -->
 
         <div class="aboutAppInfo">
-            <div class="aboutAppInfo__text">
-                <h1 class="title">Dazzlink: build great relationships</h1>
-                <div class="aboutAppInfo__cont">
-                    Dating for those who are looking for a serious life partner,
-                    not fleeting meetings
+            <div class="container aboutAppInfo__container">
+                <div class="aboutAppInfo__text">
+                    <h1 class="title">Dazzlink: build great relationships</h1>
+                    <div class="aboutAppInfo__cont">
+                        Dating for those who are looking for a serious life
+                        partner, not fleeting meetings
+                    </div>
                 </div>
-            </div>
-            <div
-                class="aboutAppInfo__infoLinks aboutAppInfo__infoLinks--forDesktop"
-            >
-                <ng-container *ngTemplateOutlet="linkToApp"></ng-container>
-            </div>
-            @if (mobileDetectService.osDevice) {
                 <div
-                    class="aboutAppInfo__infoLinks aboutAppInfo__infoLinks--forMobile"
-                >
-                    <button
-                        type="button"
-                        (click)="onClickByDownloadAppOnMobile()"
-                        class="downloadApp"
-                    >
-                        <div class="downloadApp__title">
-                            Download the<br />mobile app
-                        </div>
-                        <div class="downloadApp__icon">
-                            <img
-                                [src]="mobileDetectService.mobileStoreIconSrc()"
-                                alt="store"
-                            />
-                        </div>
-                    </button>
-                </div>
-            } @else {
-                <div
-                    class="aboutAppInfo__infoLinks aboutAppInfo__infoLinks--forMobile"
+                    class="aboutAppInfo__infoLinks aboutAppInfo__infoLinks--forDesktop"
                 >
                     <ng-container *ngTemplateOutlet="linkToApp"></ng-container>
                 </div>
-            }
+                @if (mobileDetectService.osDevice) {
+                    <div
+                        class="aboutAppInfo__infoLinks aboutAppInfo__infoLinks--forMobile"
+                    >
+                        <button
+                            type="button"
+                            (click)="onClickByDownloadAppOnMobile()"
+                            class="downloadApp"
+                        >
+                            <div class="downloadApp__title">
+                                Download the<br />mobile app
+                            </div>
+                            <div class="downloadApp__icon">
+                                <img
+                                    [src]="
+                                        mobileDetectService.mobileStoreIconSrc()
+                                    "
+                                    alt="store"
+                                />
+                            </div>
+                        </button>
+                    </div>
+                } @else {
+                    <div
+                        class="aboutAppInfo__infoLinks aboutAppInfo__infoLinks--forMobile"
+                    >
+                        <ng-container
+                            *ngTemplateOutlet="linkToApp"
+                        ></ng-container>
+                    </div>
+                }
+            </div>
         </div>
         <!-- <button
             style="

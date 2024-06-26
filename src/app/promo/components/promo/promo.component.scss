@@ -4,7 +4,6 @@
     overflow: hidden;
     position: relative;
     z-index: 10;
-    margin-bottom: 24px;
     border-radius: 16px;
     .mainVideo__video {
         display: block;
@@ -38,7 +37,6 @@
     }
     @media #{$notMobile} {
         border-radius: 32px;
-        margin-bottom: 48px;
         .mainVideo__customPoster {
             // border-radius: 32px;
         }
@@ -76,15 +74,17 @@
 }
 
 .aboutAppInfo {
-    display: flex;
-    flex-direction: column;
     margin-top: 24px;
     font-size: 24px;
 
-    .aboutAppInfo__text {
-        max-width: 586px;
-        // flex: 1;
+    .aboutAppInfo__container {
+        display: flex;
+        flex-direction: column;
+        max-width: 1100px;
+        padding: 0px;
+    }
 
+    .aboutAppInfo__text {
         .aboutAppInfo__cont {
             font-size: 24px;
             line-height: 32px;
@@ -103,13 +103,16 @@
     }
 
     @media #{$notMobile} {
-        flex-direction: row;
-        justify-content: space-between;
-        column-gap: 40px;
         margin-top: 48px;
 
-        .aboutAppInfo__text .aboutAppInfo__cont {
-            margin-top: 16px;
+        .aboutAppInfo__container {
+            flex-direction: row;
+            justify-content: space-between;
+            column-gap: 40px;
+        }
+
+        .aboutAppInfo__text {
+            max-width: 512px;
         }
 
         .aboutAppInfo__infoLinks {
