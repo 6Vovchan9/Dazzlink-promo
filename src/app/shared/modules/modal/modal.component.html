@@ -3,14 +3,10 @@
         <div class="modalLayout__wrapper">
             <div class="modalLayout__content">
                 <div class="formForDownloadApp">
-                    <h1 class="moduleTitle formForDownloadApp__title">
-                        Application for access
-                    </h1>
+                    <h1 class="moduleTitle formForDownloadApp__title">Application for access</h1>
                     <div class="formForDownloadApp__message">
-                        We invited the first users to test the application. In a
-                        few days we will open public access. If you want to keep
-                        abreast of news, provide your contacts and subscribe to
-                        updates
+                        We invited the first users to test the application. In a few days we will open public access. If
+                        you want to keep abreast of news, provide your contacts and subscribe to updates
                     </div>
                     <form
                         class="formForDownloadApp__form clientDataForm"
@@ -21,40 +17,53 @@
                             class="clientDataForm__control"
                             [ngClass]="{
                                 'clientDataForm__control--invalid':
-                                    clientForm.get('name')?.touched &&
-                                    clientForm.get('name')?.invalid,
+                                    clientForm.get('name')?.touched && clientForm.get('name')?.invalid,
                             }"
                         >
                             <input
-                                id="clientName"
                                 placeholder="Name"
                                 class="clientDataForm__input"
                                 formControlName="name"
                                 type="text"
                             />
+                            @if (clientForm.get("name")?.touched && clientForm.get("name")?.invalid) {
+                                <div class="controlError">
+                                    @if (clientForm.get("name")?.hasError("required")) {
+                                        <div class="controlError__item">Text field cannot be empty</div>
+                                    } @else {
+                                        <div class="controlError__item">Unknown error</div>
+                                    }
+                                </div>
+                            }
                         </div>
                         <div
                             class="clientDataForm__control"
                             [ngClass]="{
                                 'clientDataForm__control--invalid':
-                                    clientForm.get('email')?.touched &&
-                                    clientForm.get('email')?.invalid,
+                                    clientForm.get('email')?.touched && clientForm.get('email')?.invalid,
                             }"
                         >
                             <input
-                                id="clientEmail"
                                 placeholder="Email"
                                 class="clientDataForm__input"
                                 formControlName="email"
                                 type="text"
                             />
+                            @if (clientForm.get("email")?.touched && clientForm.get("email")?.invalid) {
+                                <div class="controlError">
+                                    @if (clientForm.get("email")?.hasError("required")) {
+                                        <div class="controlError__item">Text field cannot be empty</div>
+                                    } @else if (clientForm.controls["email"].errors?.["email"]) {
+                                        <!-- <div class="controlError__item">Please enter correct email</div> -->
+                                        <div class="controlError__item">Invalid email format</div>
+                                    } @else {
+                                        <div class="controlError__item">Unknown error</div>
+                                    }
+                                </div>
+                            }
                         </div>
                         <div class="clientDataForm__buttons">
-                            <button
-                                type="submit"
-                                class="clientDataForm__btn btn"
-                                [disabled]="submitted"
-                            >
+                            <button type="submit" class="clientDataForm__btn btn" [disabled]="submitted">
                                 Subscribe to updates
                             </button>
                         </div>
