@@ -8,66 +8,75 @@
                         We invited the first users to test the application. In a few days we will open public access. If
                         you want to keep abreast of news, provide your contacts and subscribe to updates
                     </div>
-                    <form
-                        class="formForDownloadApp__form clientDataForm"
-                        [formGroup]="clientForm"
-                        (ngSubmit)="submit()"
-                    >
-                        <div
-                            class="clientDataForm__control"
-                            [ngClass]="{
-                                'clientDataForm__control--invalid':
-                                    clientForm.get('name')?.touched && clientForm.get('name')?.invalid,
-                            }"
+                    @if (successSubmit) {
+                        <div class="formForDownloadApp__success"></div>
+                    } @else {
+                        <form
+                            class="formForDownloadApp__form clientDataForm"
+                            [formGroup]="clientForm"
+                            (ngSubmit)="submit()"
                         >
-                            <input
-                                placeholder="Name"
-                                class="clientDataForm__input"
-                                formControlName="name"
-                                type="text"
-                            />
-                            @if (clientForm.get("name")?.touched && clientForm.get("name")?.invalid) {
-                                <div class="controlError">
-                                    @if (clientForm.get("name")?.hasError("required")) {
-                                        <div class="controlError__item">Text field cannot be empty</div>
-                                    } @else {
-                                        <div class="controlError__item">Unknown error</div>
+                            <!-- Name -->
+                            <div class="clientDataForm__control">
+                                <input
+                                    placeholder="Name"
+                                    class="clientDataForm__input"
+                                    formControlName="name"
+                                    type="text"
+                                />
+                                @if (clientForm.get("name")?.touched && clientForm.get("name")?.invalid) {
+                                    <div class="controlError">
+                                        @if (clientForm.get("name")?.hasError("required")) {
+                                            <div class="controlError__item">Text field cannot be empty</div>
+                                        } @else {
+                                            <div class="controlError__item">Unknown error</div>
+                                        }
+                                    </div>
+                                }
+                            </div>
+                            <!-- Email -->
+                            <div class="clientDataForm__control">
+                                <input
+                                    placeholder="Email"
+                                    class="clientDataForm__input"
+                                    formControlName="email"
+                                    type="text"
+                                />
+                                @if (clientForm.get("email")?.touched && clientForm.get("email")?.invalid) {
+                                    <div class="controlError">
+                                        @if (clientForm.get("email")?.hasError("required")) {
+                                            <div class="controlError__item">Text field cannot be empty</div>
+                                        } @else if (clientForm.controls["email"].errors?.["email"]) {
+                                            <!-- <div class="controlError__item">Please enter correct email</div> -->
+                                            <div class="controlError__item">Invalid email format</div>
+                                        } @else {
+                                            <div class="controlError__item">Unknown error</div>
+                                        }
+                                    </div>
+                                }
+                            </div>
+                            <!-- Кнопка -->
+                            <div class="clientDataForm__buttons">
+                                <button
+                                    type="submit"
+                                    class="clientDataForm__btn btn"
+                                    [class.btn--isLoading]="submitted"
+                                    [disabled]="submitted"
+                                >
+                                    Subscribe to updates
+                                    @if (submitted) {
+                                        <div class="btn__spinner">
+                                            <img
+                                                class="spinner"
+                                                src="assets/icons/spinners/barsRotateFadeSpinner.svg"
+                                                alt="spinner"
+                                            />
+                                        </div>
                                     }
-                                </div>
-                            }
-                        </div>
-                        <div
-                            class="clientDataForm__control"
-                            [ngClass]="{
-                                'clientDataForm__control--invalid':
-                                    clientForm.get('email')?.touched && clientForm.get('email')?.invalid,
-                            }"
-                        >
-                            <input
-                                placeholder="Email"
-                                class="clientDataForm__input"
-                                formControlName="email"
-                                type="text"
-                            />
-                            @if (clientForm.get("email")?.touched && clientForm.get("email")?.invalid) {
-                                <div class="controlError">
-                                    @if (clientForm.get("email")?.hasError("required")) {
-                                        <div class="controlError__item">Text field cannot be empty</div>
-                                    } @else if (clientForm.controls["email"].errors?.["email"]) {
-                                        <!-- <div class="controlError__item">Please enter correct email</div> -->
-                                        <div class="controlError__item">Invalid email format</div>
-                                    } @else {
-                                        <div class="controlError__item">Unknown error</div>
-                                    }
-                                </div>
-                            }
-                        </div>
-                        <div class="clientDataForm__buttons">
-                            <button type="submit" class="clientDataForm__btn btn" [disabled]="submitted">
-                                Subscribe to updates
-                            </button>
-                        </div>
-                    </form>
+                                </button>
+                            </div>
+                        </form>
+                    }
                 </div>
             </div>
             <div class="modalLayout__closeBtn" (click)="onClickCloseBtn()">

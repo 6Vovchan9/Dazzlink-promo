@@ -1,12 +1,6 @@
 import { NgClass } from "@angular/common";
 import { Component, EventEmitter, Output } from "@angular/core";
-import {
-    FormGroup,
-    ReactiveFormsModule,
-    UntypedFormControl,
-    UntypedFormGroup,
-    Validators,
-} from "@angular/forms";
+import { FormGroup, ReactiveFormsModule, UntypedFormControl, UntypedFormGroup, Validators } from "@angular/forms";
 import { asyncEmailValidator } from "@app/shared/validators/login.validator";
 
 @Component({
@@ -19,6 +13,7 @@ import { asyncEmailValidator } from "@app/shared/validators/login.validator";
 export class ModalComponent {
     public clientForm!: FormGroup;
     public submitted = false;
+    public successSubmit = false;
 
     @Output("onClose")
     public closeModal = new EventEmitter();
@@ -29,9 +24,12 @@ export class ModalComponent {
 
     private initializeForm(): void {
         this.clientForm = new UntypedFormGroup({
-            name: new UntypedFormControl(null, {
-                validators: [Validators.required],
-            }),
+            name: new UntypedFormControl(
+                { value: null, disabled: false },
+                {
+                    validators: [Validators.required],
+                }
+            ),
             email: new UntypedFormControl(null, {
                 validators: [Validators.email, Validators.required],
                 asyncValidators: [asyncEmailValidator],
@@ -47,9 +45,11 @@ export class ModalComponent {
         this.clientForm.markAllAsTouched();
         if (this.clientForm?.valid) {
             this.submitted = true;
+            this.clientForm.disable();
             setTimeout(() => {
+                this.successSubmit = true;
                 this.submitted = false;
-            }, 1500);
+            }, 1700);
         }
     }
 }

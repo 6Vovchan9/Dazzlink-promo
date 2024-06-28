@@ -63,9 +63,16 @@
     .formForDownloadApp__message {
         font-size: 24px;
         line-height: 32px;
-        margin-bottom: 48px;
+    }
+    .formForDownloadApp__success {
+        width: 62px;
+        height: 62px;
+        background: url("src/assets/icons/successSubmit.svg") center center no-repeat;
+        background-size: contain;
+        margin-top: 24px;
     }
     .formForDownloadApp__form {
+        margin-top: 48px;
     }
 
     @media #{$notMobile} {
@@ -90,13 +97,15 @@
             outline: none;
             width: 100%;
             caret-color: #4a4ac6;
+            &.ng-invalid.ng-touched {
+                border-color: #d70015;
+            }
+            &:disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
+            }
             &::placeholder {
                 color: #a8a8a8;
-            }
-        }
-        &--invalid {
-            .clientDataForm__input {
-                border-color: #d70015;
             }
         }
     }

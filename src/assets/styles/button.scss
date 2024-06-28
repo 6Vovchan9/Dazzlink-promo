@@ -12,5 +12,23 @@
     &:disabled {
         cursor: not-allowed;
         opacity: 0.3;
+        .btn__spinner {
+            display: none;
+            height: 100%;
+            padding: 6px 0px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        &.btn--isLoading {
+            position: relative;
+            opacity: 1;
+            color: #4a4ac6;
+            cursor: wait;
+            .btn__spinner {
+                display: block;
+            }
+        }
     }
 }
