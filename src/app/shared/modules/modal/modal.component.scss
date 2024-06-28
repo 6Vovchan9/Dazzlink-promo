@@ -87,6 +87,10 @@
     .clientDataForm__control {
         margin-bottom: 12px;
         .clientDataForm__input {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+
             font-size: 16px;
             line-height: 24px;
             padding: 10px;

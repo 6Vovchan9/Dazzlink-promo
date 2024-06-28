@@ -1,14 +1,5 @@
 import { NgTemplateOutlet } from "@angular/common";
-import {
-    AfterViewInit,
-    Component,
-    ElementRef,
-    OnDestroy,
-    Optional,
-    ViewChild,
-    effect,
-    signal,
-} from "@angular/core";
+import { AfterViewInit, Component, ElementRef, OnDestroy, Optional, ViewChild, effect, signal } from "@angular/core";
 import { AbsractExample } from "@app/shared/helpers/abstract.class";
 import { FooterComponent } from "@app/shared/modules/footer/footer.component";
 
@@ -19,19 +10,11 @@ import { MobileDetectService } from "@app/shared/services/mobile-detect.service"
 @Component({
     selector: "app-promo",
     standalone: true,
-    imports: [
-        HeaderComponent,
-        FooterComponent,
-        NgTemplateOutlet,
-        ModalComponent,
-    ],
+    imports: [HeaderComponent, FooterComponent, NgTemplateOutlet, ModalComponent],
     templateUrl: "./promo.component.html",
     styleUrl: "./promo.component.scss",
 })
-export class PromoComponent
-    extends AbsractExample
-    implements AfterViewInit, OnDestroy
-{
+export class PromoComponent extends AbsractExample implements AfterViewInit, OnDestroy {
     @ViewChild("advertisingVideo") advertisingVideo!: ElementRef;
 
     public name = signal<string>("Ivan");
@@ -123,6 +106,7 @@ export class PromoComponent
     public onClickByDownloadApp(e: Event): void {
         if (this.linkToAppDummy) {
             e.preventDefault();
+            this.advertisingVideo?.nativeElement.pause();
             this.openAppFormModal.set(true);
             this.hideScroll();
         }
@@ -130,6 +114,7 @@ export class PromoComponent
 
     public onClickByDownloadAppOnMobile(): void {
         if (this.linkToAppDummy) {
+            this.advertisingVideo?.nativeElement.pause();
             this.openAppFormModal.set(true);
             this.hideScroll();
         } else {
