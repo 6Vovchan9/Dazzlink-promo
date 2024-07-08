@@ -18,6 +18,7 @@ export class PromoComponent extends AbsractExample implements AfterViewInit, OnD
     @ViewChild("advertisingVideo") advertisingVideo!: ElementRef;
 
     public name = signal<string>("Ivan");
+    public posterImgLoad = signal<boolean>(false);
     public linkToAppDummy = true;
     public openAppFormModal = signal<boolean>(false);
     public showVideoPoster = signal<boolean>(true); // если бы не сигнал то при OnPush стратегии пришлось бы запускать detectChanges при изм значения этого свойства
@@ -101,6 +102,10 @@ export class PromoComponent extends AbsractExample implements AfterViewInit, OnD
     public onCloseModal(): void {
         this.openAppFormModal.set(false);
         this.showScroll();
+    }
+
+    public onloadCustomPoster() {
+        this.posterImgLoad.set(true);
     }
 
     public onClickByDownloadApp(e: Event): void {

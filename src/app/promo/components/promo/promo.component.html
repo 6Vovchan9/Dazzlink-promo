@@ -1,16 +1,29 @@
 <app-header></app-header>
 <main class="page">
     <div class="container page__container">
-        <div class="mainVideo">
+        <div class="mainVideo" [class.mainVideo--afterLoadPosterImg]="posterImgLoad()">
             <video #advertisingVideo class="mainVideo__video" playsinline controls>
                 <source src="https://static.dazzlink.asia/landing/advertising.mp4" type="video/mp4" />
                 Ваш браузер не поддерживает встроенные видео.
             </video>
-            <div
-                class="mainVideo__customPoster"
-                [class.mainVideo__customPoster--hidden]="!showVideoPoster()"
+            <!-- <div
+                class="mainVideo__customPoster1"
+                [class.mainVideo__customPoster1--hidden]="!showVideoPoster()"
                 (click)="onVideoPlay()"
             >
+                <div class="playIcon"></div>
+            </div> -->
+            <div
+                class="mainVideo__customPoster2"
+                (click)="onVideoPlay()"
+                [class.mainVideo__customPoster2--hidden]="!showVideoPoster()"
+            >
+                <img
+                    class="mainVideo__posterImg"
+                    (load)="onloadCustomPoster()"
+                    src="assets/images/promo-page/bannerForVideo.png"
+                    alt="poster"
+                />
                 <div class="playIcon"></div>
             </div>
         </div>
