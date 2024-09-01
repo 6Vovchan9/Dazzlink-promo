@@ -1,11 +1,66 @@
 <header class="header">
     <div class="container header__container">
-        <a routerLink="/" class="logo">
-            <img
-                src="assets/images/fullLogo.svg"
-                class="logo__image"
-                alt="logotip"
-            />
-        </a>
+        <div class="header__col">
+            <a routerLink="/" class="logo">
+                <img class="logo__image" src="assets/images/fullLogo.svg" alt="logotip" />
+            </a>
+        </div>
+        <div class="header__col header__col--alignRight">
+            <div class="header__menu">
+                <nav class="menu">
+                    <ul class="menu__list">
+                        <li
+                            class="menu__item"
+                            [routerLinkActiveOptions]="{ exact: true }"
+                            routerLinkActive="menu__item--active"
+                        >
+                            <a class="menu__link" routerLink="/">Mobile app</a>
+                        </li>
+                        <li class="menu__item" routerLinkActive="menu__item--active">
+                            <a class="menu__link" routerLink="/company">Company</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <button (click)="openNavPopup()" class="hamburger">
+                <div class="hamburger__line"></div>
+            </button>
+        </div>
     </div>
 </header>
+
+<!-- Модалка с навигацией для мобилы -->
+<div *ngIf="showNavModal" class="navigationModal">
+    <div class="navigationModal__header">
+        <div class="headerInModal">
+            <div class="headerInModal__col">
+                <a routerLink="/" (click)="closeNavPopup()" class="logo">
+                    <img src="assets/images/fullLogo.svg" class="logo__image" alt="logotip" />
+                </a>
+            </div>
+            <div class="headerInModal__col">
+                <div (click)="closeNavPopup()" class="closeButtonInWindow">
+                    <div class="iconForCloseInModal"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="navigationModal__contentWrap">
+        <div class="navigationModal__content">
+            <nav class="menu navigationModal__menu">
+                <ul class="menu__list">
+                    <li
+                        class="menu__item"
+                        routerLinkActive="menu__item--active"
+                        [routerLinkActiveOptions]="{ exact: true }"
+                    >
+                        <a class="menu__link" (click)="closeNavPopup()" routerLink="/">Mobile app</a>
+                    </li>
+                    <li class="menu__item" routerLinkActive="menu__item--active">
+                        <a class="menu__link" (click)="closeNavPopup()" routerLink="/company">Company</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

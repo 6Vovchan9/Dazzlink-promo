@@ -2,6 +2,7 @@
 <main class="page">
     <div class="container page__container">
         <div class="mainVideo" [class.mainVideo--afterLoadPosterImg]="posterImgLoad()">
+            <!-- Todo: нужно будет добавить событие (error) на видео когда не удастся его загрузить чтоб на баннере не показывался значок "play" и курсор был не pointer. Только у него слабая поддержка браузеров поэтому скорее всего придется прибегнуть к событию canplay -->
             <video #advertisingVideo class="mainVideo__video" playsinline controls>
                 <source src="https://static.dazzlink.asia/landing/advertising.mp4" type="video/mp4" />
                 Ваш браузер не поддерживает встроенные видео.
