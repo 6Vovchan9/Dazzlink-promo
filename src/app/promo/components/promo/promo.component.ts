@@ -99,6 +99,12 @@ export class PromoComponent extends AbsractExample implements AfterViewInit, OnD
         }
     }
 
+    public onHeaderClick(e: any): void {
+        if (e.target.dataset.selector === "hamburger") {
+            this.advertisingVideo?.nativeElement.pause();
+        }
+    }
+
     public onCloseModal(): void {
         this.openAppFormModal.set(false);
         this.showScroll();
