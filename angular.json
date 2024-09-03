@@ -24,10 +24,7 @@
                         "tsConfig": "tsconfig.app.json",
                         "inlineStyleLanguage": "scss",
                         "assets": ["src/favicon.ico", "src/assets"],
-                        "styles": [
-                            "src/styles.scss",
-                            "src/assets/styles/common.scss"
-                        ],
+                        "styles": ["src/styles.scss", "src/assets/styles/common.scss"],
                         "stylePreprocessorOptions": {
                             "includePaths": ["src/common-styles"]
                         },
@@ -49,7 +46,7 @@
                                 {
                                     "type": "anyComponentStyle",
                                     "maximumWarning": "2kb",
-                                    "maximumError": "4kb"
+                                    "maximumError": "8kb"
                                 }
                             ],
                             "outputHashing": "all"

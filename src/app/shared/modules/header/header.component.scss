@@ -13,10 +13,10 @@
 
             .header__menu {
                 font-size: 16px;
-                display: none;
-                @media #{$notMobile} {
-                    display: block;
-                }
+                // display: none;
+                // @media #{$notMobile} {
+                display: block;
+                // }
             }
         }
 
@@ -167,6 +167,9 @@
             &--active {
                 .menu__link {
                     color: var(--color-text-gray);
+                }
+                @media #{$mobile} {
+                    display: none;
                 }
             }
             &:not(.menu__item--active) {
