@@ -1,5 +1,12 @@
 @import "variables";
 
+.page {
+    margin-top: 24px;
+    @media #{$notMobile} {
+        margin-top: 48px;
+    }
+}
+
 .mainVideo {
     overflow: hidden;
     position: relative;
@@ -176,5 +183,12 @@
                 display: none;
             }
         }
+    }
+}
+
+.promoFooter {
+    .promoFooter__container {
+        max-width: 1140px;
+        padding: 0px;
     }
 }
