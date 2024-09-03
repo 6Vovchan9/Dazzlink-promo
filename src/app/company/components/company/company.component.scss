@@ -177,32 +177,24 @@
     font-size: 24px;
 
     .ourTeam__desc {
+        display: flex;
+        column-gap: 80px;
         line-height: 32px;
 
         p {
             flex: 1;
         }
 
-        &--forDesktop {
-            display: none;
-            @media #{$notMobile} {
-                display: flex;
-                column-gap: 80px;
-            }
-        }
-
-        &--forMobile {
-            display: block;
-            @media #{$notMobile} {
-                display: none;
-            }
+        @media #{$mobile} {
+            flex-direction: column;
+            row-gap: 24px;
         }
     }
 
     .ourTeam__list {
         display: flex;
         flex-direction: column;
-        margin-top: 24px;
+        margin-top: 48px;
         row-gap: 48px;
         .ourTeam__item {
             &--withDetails {
@@ -232,7 +224,6 @@
     @media #{$notMobile} {
         .ourTeam__list {
             row-gap: 64px;
-            margin-top: 48px;
             flex-direction: row;
             flex-wrap: wrap;
             .ourTeam__item {
