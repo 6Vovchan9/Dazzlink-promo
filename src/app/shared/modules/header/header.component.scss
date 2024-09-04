@@ -174,10 +174,10 @@
             }
             &:not(.menu__item--active) {
                 &:hover {
-                    background-color: var(--color-black1);
+                    // background-color: var(--color-black1);
                     .menu__link {
                         cursor: pointer;
-                        color: var(--color-white);
+                        // color: var(--color-white);
                     }
                 }
             }

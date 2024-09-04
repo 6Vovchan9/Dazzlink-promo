@@ -20,6 +20,8 @@
 .mainPicture {
     position: relative;
     overflow: hidden;
+    min-height: 300px;
+    background-color: var(--color-gray1);
     margin-top: 48px;
     border-radius: 24px;
     z-index: 10;
