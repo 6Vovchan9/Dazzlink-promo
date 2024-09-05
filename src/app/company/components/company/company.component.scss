@@ -28,6 +28,7 @@
 
     .mainPicture__picture {
         display: block;
+        height: 100%;
         .mainPicture__img {
             width: 100%;
             height: 100%;
@@ -58,9 +59,8 @@
 
     @media #{$notMobile} {
         border-radius: 32px;
+        height: 480px;
         .mainPicture__picture {
-            height: 480px;
-            // aspect-ratio: 2.5;
         }
         .mainPicture__preview {
             display: block;
@@ -68,11 +68,11 @@
     }
 
     @media #{$mobile} {
+        // aspect-ratio: 1; // это не обязательно но нужн для того чтобы не было прыжков при первой загрузки страницы
+        height: calc(
+            100vw - 40px
+        ); // "aspect-ratio" не работает на старых версиях браузера поэтому приходится прибегнуть к такому старому способу установления высоты
         .mainPicture__picture {
-            // aspect-ratio: 1; // это не обязательно но нужн для того чтобы не было прыжков при первой загрузки страницы
-            height: calc(
-                100vw - 40px
-            ); // "aspect-ratio" не работает на старых версиях браузера поэтому приходится прибегнуть к такому старому способу установления высоты
         }
         .mainPicture__previewMini {
             display: block;
