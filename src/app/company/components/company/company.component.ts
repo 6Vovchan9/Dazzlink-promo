@@ -28,8 +28,10 @@ export class CompanyComponent extends AbsractExample {
     }
 
     public openPersonDescModal(persona: TeammateData): void {
-        this.chosenPersonData = persona;
-        this.hideScroll();
+        if (persona.details?.vita) {
+            this.chosenPersonData = persona;
+            this.hideScroll();
+        }
     }
 
     public closePersonDescModal(): void {
